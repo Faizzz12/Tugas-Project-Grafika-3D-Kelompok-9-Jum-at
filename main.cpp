@@ -114,8 +114,8 @@ void pintu() {
     glColor3f(0.4, 0.2, 0.1); // Set color to dark brown
 
     glPushMatrix();
-    glTranslatef(45.0, -7.0, -70.0); 
-    glScalef(2.5, -7.0, 0.1);
+    glTranslatef(45.0, 5.0, -70.0); 
+    glScalef(2.5, -5.0, 0.1);
     glutSolidCube(10.0); 
     glPopMatrix();
 }
