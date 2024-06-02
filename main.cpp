@@ -1,174 +1,774 @@
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 #include <GL/glut.h>
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DEKLARASI DAN INISIASI VARIABEL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DEKLARASI DAN INISIASI FUNGSI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //****************************************** fungsi display **********************************************************************
-void ubin(){
-    glColor3d(0.66,0.66,0.66);
+void ubin()
+{
+    glColor3d(0.66, 0.66, 0.66);
     glPushMatrix();
-        glTranslated(0.0,-14.0,-20.0);
-        glScaled(12.0,0.2,10.0);
-        glutSolidCube(10);
+    glTranslated(0.0, -14.0, -20.0);
+    //*****alas*****
+    //depan
+    glBegin(GL_QUADS);
+    glVertex3f(-60.0, -2.0, 60.0);
+    glVertex3f(-60.0, -6.0, 60.0);
+    glVertex3f(60.0, -6.0, 60.0);
+    glVertex3f(60.0, -2.0, 60.0);
+    glEnd();
+    //belakang
+    glBegin(GL_QUADS);
+    glVertex3f(-60.0, -2.0, -60.0);
+    glVertex3f(-60.0, -6.0, -60.0);
+    glVertex3f(60.0, -6.0, -60.0);
+    glVertex3f(60.0, -2.0, -60.0);
+    glEnd();
+    //atas
+    glBegin(GL_QUADS);
+    glVertex3f(-60.0, -2.0, -60.0);
+    glVertex3f(-60.0, -2.0, 60.0);
+    glVertex3f(60.0, -2.0, 60.0);
+    glVertex3f(60.0, -2.0, -60.0);
+    glEnd();
+    //bawah
+    glBegin(GL_QUADS);
+    glVertex3f(-60.0, -6.0, -60.0);
+    glVertex3f(-60.0, -6.0, 60.0);
+    glVertex3f(60.0, -6.0, 60.0);
+    glVertex3f(60.0, -6.0, -60.0);
+    glEnd();
+    //kanan
+    glBegin(GL_QUADS);
+    glVertex3f(60.0, -2.0, 60.0);
+    glVertex3f(60.0, -6.0, 60.0);
+    glVertex3f(60.0, -6.0, -60.0);
+    glVertex3f(60.0, -2.0, -60.0);
+    glEnd();
+
     glPopMatrix();
 }
 
-void dindingBelakang(){
-    // dinding
+void dindingBelakang()
+{
     glPushMatrix();
-        glTranslated(0.0,25.0,-71.0);
-        glScaled(12.0,8.0,0.2);
-        glutSolidCube(10);
+    glTranslatef(0.0, 63.0, -80.0);
+    glColor3f(0.66, 0.66, 0.66);
+
+    //*****dinding Belakang*****
+    glBegin(GL_QUADS);
+
+    // Depan
+    glVertex3f(-60.0, 2.0, 1.0);
+    glVertex3f(60.0, 2.0, 1.0);
+    glVertex3f(60.0, -80.0, 1.0);  
+    glVertex3f(-60.0, -80.0, 1.0); 
+
+    // Belakang
+    glVertex3f(-60.0, 8.0, -1.0);
+    glVertex3f(60.0, 8.0, -1.0);
+    glVertex3f(60.0, -80.0, -1.0);  
+    glVertex3f(-60.0, -80.0, -1.0); 
+
+    // Atas
+    glVertex3f(-60.0, 8.0, 1.0);
+    glVertex3f(60.0, 8.0, 1.0);
+    glVertex3f(60.0, 8.0, -1.0);
+    glVertex3f(-60.0, 8.0, -1.0);
+
+    // Bawah
+    glVertex3f(-60.0, -80.0, 1.0);  
+    glVertex3f(60.0, -80.0, 1.0);   
+    glVertex3f(60.0, -80.0, -1.0);  
+    glVertex3f(-60.0, -80.0, -1.0); 
+
+    // Kiri
+    glVertex3f(-60.0, 8.0, 1.0);
+    glVertex3f(-60.0, 8.0, -1.0);
+    glVertex3f(-60.0, -80.0, -1.0);  
+    glVertex3f(-60.0, -80.0, 1.0);   
+
+    // Kanan
+    glVertex3f(60.0, 8.0, 1.0);
+    glVertex3f(60.0, 8.0, -1.0);
+    glVertex3f(60.0, -80.0, -1.0);  
+    glVertex3f(60.0, -80.0, 1.0);   
+
+glEnd();
+
+
     glPopMatrix();
 }
 
-void dindingKiri(){
-    // dinding
+void dindingKiri()
+{
+    //*****dinding*****
     glPushMatrix();
-        glTranslated(-71.0,25.0,-20.0); 
-        glScaled(0.2,8.0,10.0); 
-        glutSolidCube(10);
+    glTranslated(-71.0, 63.0, -20.0);
+    //depan
+    glBegin(GL_QUADS);
+
+    // Depan 
+    glVertex3f(-1.0, 2.0, 60.0);
+    glVertex3f(-1.0, 2.0, -60.0);
+    glVertex3f(-1.0, -80.0, -60.0);  
+    glVertex3f(-1.0, -80.0, 60.0); 
+
+    // Belakang 
+    glVertex3f(1.0, 8.0, 60.0);
+    glVertex3f(1.0, 8.0, -60.0);
+    glVertex3f(1.0, -80.0, -60.0);  
+    glVertex3f(1.0, -80.0, 60.0); 
+
+    // Atas 
+    glVertex3f(-1.0, 8.0, 60.0);
+    glVertex3f(1.0, 8.0, 60.0);
+    glVertex3f(1.0, 8.0, -60.0);
+    glVertex3f(-1.0, 8.0, -60.0);
+
+    // Bawah 
+    glVertex3f(-1.0, -80.0, 60.0);  
+    glVertex3f(1.0, -80.0, 60.0);   
+    glVertex3f(1.0, -80.0, -60.0);  
+    glVertex3f(-1.0, -80.0, -60.0); 
+
+    // Kiri 
+    glVertex3f(-1.0, 8.0, 60.0);
+    glVertex3f(1.0, 8.0, 60.0);
+    glVertex3f(1.0, -80.0, 60.0);  
+    glVertex3f(-1.0, -80.0, 60.0);   
+
+    // Kanan 
+    glVertex3f(-1.0, 8.0, -60.0);
+    glVertex3f(1.0, 8.0, -60.0);
+    glVertex3f(1.0, -80.0, -60.0);  
+    glVertex3f(-1.0, -80.0, -60.0);   
+
+glEnd();
     glPopMatrix();
 }
 
-void dinding(){
-    glColor3d(1.0,1.0,1.0);
+void dinding()
+{
+    glColor3d(1.0, 1.0, 1.0);
 
     glPushMatrix();
-        dindingBelakang();
+    dindingBelakang();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(10.0,0.0,0.0);
-        dindingKiri();
+    glTranslated(10.0, 0.0, 0.0);
+    dindingKiri();
     glPopMatrix();
 }
 
-
-void tempatsampah() {
+void tempatsampah()
+{
     glPushMatrix();
 
-    // Bagian atas tempat sampah
+    // Posisi relatif terhadap ubin
+    glTranslated(-45.0, -10.0, 29.0);
+
+    // Posisi relatif terhadap bagian atas tempat sampah
+    glTranslated(0.0, 3.5, 5.0);
+
+    glBegin(GL_QUADS);
+
+    // Warna abu-abu untuk seluruh balok
     glColor3f(0.5, 0.5, 0.5);
-    glTranslated(-50.0, -7.0, 19.0); // Posisi relatif terhadap ubin
-    glScalef(1.0, 1.5, 1.0); // Ukuran tempat sampah yang lebih besar
-    glutSolidCube(10.0);
 
-    // Lubang tempat sampah
-    glColor3f(0.0, 0.0, 0.0);
-    glTranslated(0.0, 3.5, 5.0); // Posisi relatif terhadap bagian atas tempat sampah, sesuai dengan perubahan posisi relatif sebelumnya
-    glScalef(0.8, 0.2, 0.002); // Skala untuk membuat lubang tempat masukan sampah
-    glutSolidCube(10.0);
+    // Sisi depan (dengan lubang hitam di sepertiga bagian atas)
+    // Bagian atas dengan lubang hitam
+    glVertex3f(-5.0, 10.0, 5.0);
+    glVertex3f(5.0, 10.0, 5.0);
+    glVertex3f(5.0, 5.0, 5.0);
+    glVertex3f(-5.0, 5.0, 5.0);
+
+    glColor3f(0.0, 0.0, 0.0); // Hitam untuk lubang
+    glVertex3f(-3.0, 3.0, 5.1);
+    glVertex3f(3.0, 3.0, 5.1);
+    glVertex3f(3.0, 7.0, 5.1);
+    glVertex3f(-3.0, 7.0, 5.1);
+
+    // Kembali ke abu-abu
+    glColor3f(0.5, 0.5, 0.5);
+    // Bagian bawah
+    glVertex3f(-5.0, -10.0, 5.0);
+    glVertex3f(5.0, -10.0, 5.0);
+    glVertex3f(5.0, 3.0, 5.0);
+    glVertex3f(-5.0, 3.0, 5.0);
+
+    // Sisi belakang
+    glVertex3f(-5.0, -10.0, -5.0);
+    glVertex3f(5.0, -10.0, -5.0);
+    glVertex3f(5.0, 10.0, -5.0);
+    glVertex3f(-5.0, 10.0, -5.0);
+
+    // Sisi kiri
+    glVertex3f(-5.0, -10.0, 5.0);
+    glVertex3f(-5.0, 10.0, 5.0);
+    glVertex3f(-5.0, 10.0, -5.0);
+    glVertex3f(-5.0, -10.0, -5.0);
+
+    // Sisi kanan
+    glVertex3f(5.0, -10.0, 5.0);
+    glVertex3f(5.0, 10.0, 5.0);
+    glVertex3f(5.0, 10.0, -5.0);
+    glVertex3f(5.0, -10.0, -5.0);
+
+    // Sisi atas
+    glVertex3f(-5.0, 10.0, 5.0);
+    glVertex3f(5.0, 10.0, 5.0);
+    glVertex3f(5.0, 10.0, -5.0);
+    glVertex3f(-5.0, 10.0, -5.0);
+
+    // Sisi bawah
+    glVertex3f(-5.0, -10.0, 5.0);
+    glVertex3f(5.0, -10.0, 5.0);
+    glVertex3f(5.0, -10.0, -5.0);
+    glVertex3f(-5.0, -10.0, -5.0);
+
+    glEnd();
 
     glPopMatrix();
 }
 
 void meja() {
-    glColor3f(0.7, 0.5, 0.3);
+glPushMatrix();
+glColor3f(0.7, 0.5, 0.3);
+glTranslatef(2, -3.0, -50.0); // Kanan, bawah, depan
 
-    // depan meja
-    glPushMatrix();
-    glTranslatef(-1.5, 0.75, -45.0); // Kanan, bawah, depan
-    glScalef(5.0, 2.0, 1.0);
-    glutSolidCube(15.0);
-    glPopMatrix();
+//****** Sisi depan meja******
+glBegin(GL_QUADS);
+// Depan
+glVertex3f(-35, 16, 6);
+glVertex3f(35, 16, 6);
+glVertex3f(35, -16, 6);
+glVertex3f(-35, -16, 6);
 
-    // kanan meja
-    glPushMatrix();
-    glTranslatef(-31.5, 0.75, -52.0);  
-    glScalef(1.0, 2.0, 1.8);
-    glutSolidCube(15.0);
-    glPopMatrix();
+// Belakang
+glVertex3f(-35, 16, -6);
+glVertex3f(35, 16, -6);
+glVertex3f(35, -16, -6);
+glVertex3f(-35, -16, -6);
 
-    //kiri meja
-    glPushMatrix();
-    glTranslatef(28.8, 0.75, -52.0);  
-    glScalef(1.0, 2.0, 1.8); 
-    glutSolidCube(15.0);
-    glPopMatrix();
+// Kiri
+glVertex3f(-35, 16, 6);
+glVertex3f(-35, -16, 6);
+glVertex3f(-35, -16, -6);
+glVertex3f(-35, 16, -6);
+
+// Kanan
+glVertex3f(35, 16, 6);
+glVertex3f(35, -16, 6);
+glVertex3f(35, -16, -6);
+glVertex3f(35, 16, -6);
+
+// Bagian atas
+glVertex3f(-35, 16, 6);
+glVertex3f(35, 16, 6);
+glVertex3f(35, 16, -6);
+glVertex3f(-35, 16, -6);
+glEnd();
+
+glPopMatrix();
+
+//******kanan meja****** 
+glPushMatrix();
+glColor3f(0.7, 0.5, 0.3);
+glTranslatef(-28, -3.0, -60.0); // Kanan, bawah, depan
+glBegin(GL_QUADS);
+// Depan
+glVertex3f(-6, 16, 6);
+glVertex3f(6, 16, 6);
+glVertex3f(6, -16, 6);
+glVertex3f(-6, -16, 6);
+
+// Belakang
+glVertex3f(-6, 16, -6);
+glVertex3f(6, 16, -6);
+glVertex3f(6, -16, -6);
+glVertex3f(-6, -16, -6);
+
+// Kiri
+glVertex3f(-6, 16, 6);
+glVertex3f(-6, -16, 6);
+glVertex3f(-6, -16, -6);
+glVertex3f(-6, 16, -6);
+
+// Kanan
+glVertex3f(6, 16, 6);
+glVertex3f(6, -16, 6);
+glVertex3f(6, -16, -6);
+glVertex3f(6, 16, -6);
+
+// Bagian atas
+glVertex3f(-6, 16, 6);
+glVertex3f(6, 16, 6);
+glVertex3f(6, 16, -6);
+glVertex3f(-6, 16, -6);
+glEnd();
+
+glPopMatrix();
+
 }
 
-void logo() {
-    glColor3f(1.0, 0.0, 0.0);
+void logo()
+{
+    //******Menggambar tanda tambah horizontal******
     glPushMatrix();
+    glTranslatef(0.0, 45.0, -70.0); // Posisi untuk tanda tambah horizontal
+    // Warna hijau untuk tanda tambah
+    glColor3f(0.0, 1.0, 0.0);
 
-    //datar
-    glTranslatef(0.0, 45, -70.0); 
-    glScalef(0.2, 1.0, 0.2);
-    glutSolidCube(10.0);
-    glPopMatrix();
+    // Bagian horizontal tanda tambah (ditengah)
+    glBegin(GL_QUADS);
 
-    //tegak
-    glPushMatrix();
-    glTranslatef(0.0, 45.0, -70.0);
-    glScalef(1.0, 0.2, 0.2);
-    glutSolidCube(10.0);
+    // Depan
+    glVertex3f(-5.0, 2.0, 1.0);
+    glVertex3f(5.0, 2.0, 1.0);
+    glVertex3f(5.0, -2.0, 1.0);
+    glVertex3f(-5.0, -2.0, 1.0);
+
+    // Belakang
+    glVertex3f(-5.0, 2.0, -1.0);
+    glVertex3f(5.0, 2.0, -1.0);
+    glVertex3f(5.0, -2.0, -1.0);
+    glVertex3f(-5.0, -2.0, -1.0);
+
+    // Atas
+    glVertex3f(-5.0, 2.0, 1.0);
+    glVertex3f(5.0, 2.0, 1.0);
+    glVertex3f(5.0, 2.0, -1.0);
+    glVertex3f(-5.0, 2.0, -1.0);
+
+    // Bawah
+    glVertex3f(-5.0, -2.0, 1.0);
+    glVertex3f(5.0, -2.0, 1.0);
+    glVertex3f(5.0, -2.0, -1.0);
+    glVertex3f(-5.0, -2.0, -1.0);
+
+    // Kiri
+    glVertex3f(-5.0, 2.0, 1.0);
+    glVertex3f(-5.0, 2.0, -1.0);
+    glVertex3f(-5.0, -2.0, -1.0);
+    glVertex3f(-5.0, -2.0, 1.0);
+
+    // Kanan
+    glVertex3f(5.0, 2.0, 1.0);
+    glVertex3f(5.0, 2.0, -1.0);
+    glVertex3f(5.0, -2.0, -1.0);
+    glVertex3f(5.0, -2.0, 1.0);
+
+    glEnd();
+
+    //******Bagian vertikal tanda tambah (ditengah)******
+    glBegin(GL_QUADS);
+
+    // Depan
+    glVertex3f(-2.0, 5.0, 1.0);
+    glVertex3f(2.0, 5.0, 1.0);
+    glVertex3f(2.0, -5.0, 1.0);
+    glVertex3f(-2.0, -5.0, 1.0);
+
+    // Belakang
+    glVertex3f(-2.0, 5.0, -1.0);
+    glVertex3f(2.0, 5.0, -1.0);
+    glVertex3f(2.0, -5.0, -1.0);
+    glVertex3f(-2.0, -5.0, -1.0);
+
+    // Atas
+    glVertex3f(-2.0, 5.0, 1.0);
+    glVertex3f(2.0, 5.0, 1.0);
+    glVertex3f(2.0, 5.0, -1.0);
+    glVertex3f(-2.0, 5.0, -1.0);
+
+    // Bawah
+    glVertex3f(-2.0, -5.0, 1.0);
+    glVertex3f(2.0, -5.0, 1.0);
+    glVertex3f(2.0, -5.0, -1.0);
+    glVertex3f(-2.0, -5.0, -1.0);
+
+    // Kiri
+    glVertex3f(-2.0, 5.0, 1.0);
+    glVertex3f(-2.0, 5.0, -1.0);
+    glVertex3f(-2.0, -5.0, -1.0);
+    glVertex3f(-2.0, -5.0, 1.0);
+
+    // Kanan
+    glVertex3f(2.0, 5.0, 1.0);
+    glVertex3f(2.0, 5.0, -1.0);
+    glVertex3f(2.0, -5.0, -1.0);
+    glVertex3f(2.0, -5.0, 1.0);
+
+    glEnd();
+
     glPopMatrix();
 }
 
 void pintu() {
-    glColor3f(0.4, 0.2, 0.1); // Set color to dark brown
-
     glPushMatrix();
-    glTranslatef(45.0, 5.0, -70.0); 
-    glScalef(2.5, -5.0, 0.1);
-    glutSolidCube(10.0); 
+    glTranslatef(43, 30.0, -70.0);
+    glColor3f(0.4, 0.2, 0.1);
+
+    glBegin(GL_QUADS);
+
+    // Depan
+    glVertex3f(-15.0, 2.0, 1.0);
+    glVertex3f(15.0, 2.0, 1.0);
+    glVertex3f(15.0, -45.0, 1.0);
+    glVertex3f(-15.0, -45.0, 1.0);
+
+    // Belakang
+    glVertex3f(-15.0, 2.0, -1.0);
+    glVertex3f(15.0, 2.0, -1.0);
+    glVertex3f(15.0, -45.0, -1.0);
+    glVertex3f(-15.0, -45.0, -1.0);
+
+    // Atas
+    glVertex3f(-15.0, 2.0, 1.0);
+    glVertex3f(15.0, 2.0, 1.0);
+    glVertex3f(15.0, 2.0, -1.0);
+    glVertex3f(-15.0, 2.0, -1.0);
+
+    // Bawah
+    glVertex3f(-15.0, -35.0, 1.0);
+    glVertex3f(15.0, -35.0, 1.0);
+    glVertex3f(15.0, -45.0, -1.0);
+    glVertex3f(-15.0, -45.0, -1.0);
+
+    // Kiri
+    glVertex3f(-15.0, 2.0, 1.0);
+    glVertex3f(-15.0, 2.0, -1.0);
+    glVertex3f(-15.0, -45.0, -1.0);
+    glVertex3f(-15.0, -45.0, 1.0);
+
+    // Kanan
+    glVertex3f(15.0, 2.0, 1.0);
+    glVertex3f(15.0, 2.0, -1.0);
+    glVertex3f(15.0, -45.0, -1.0);
+    glVertex3f(15.0, -45.0, 1.0);
+
+    glEnd();
     glPopMatrix();
 }
 
+void kursi() {
 
+    glPushMatrix();
+    glTranslated(-95.0, -6.0, -55.0);
+    //******batang 1******
+    //  Depan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 80.0);
+    glVertex3f(69.0, -10.0, 80.0);
+    glVertex3f(72.0, -10.0, 80.0);
+    glVertex3f(72.0, -2.0, 80.0);
+    glEnd();
 
-void display(){
+    // Belakang
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 77.0);
+    glVertex3f(69.0, -10.0, 77.0);
+    glVertex3f(72.0, -10.0, 77.0);
+    glVertex3f(72.0, -2.0, 77.0);
+    glEnd();
+
+    // Kanan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(72.0, -2.0, 80.0);
+    glVertex3f(72.0, -10.0, 80.0);
+    glVertex3f(72.0, -10.0, 77.0);
+    glVertex3f(72.0, -2.0, 77.0);
+    glEnd();
+
+    // Kiri
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 80.0);
+    glVertex3f(69.0, -10.0, 80.0);
+    glVertex3f(69.0, -10.0, 77.0);
+    glVertex3f(69.0, -2.0, 77.0);
+    glEnd();
+
+    // Atas
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 80.0);
+    glVertex3f(72.0, -2.0, 80.0);
+    glVertex3f(72.0, -2.0, 77.0);
+    glVertex3f(69.0, -2.0, 77.0);
+    glEnd();
+
+    // Bawah
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -10.0, 80.0);
+    glVertex3f(72.0, -10.0, 80.0);
+    glVertex3f(72.0, -10.0, 77.0);
+    glVertex3f(69.0, -10.0, 77.0);
+    glEnd();
+
+    //******batang 2******
+    // depan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 80.0);
+    glVertex3f(51.0, -10.0, 80.0);
+    glVertex3f(54.0, -10.0, 80.0);
+    glVertex3f(54.0, -2.0, 80.0);
+    glEnd();
+    // belakang
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 77.0);
+    glVertex3f(51.0, -10.0, 77.0);
+    glVertex3f(54.0, -10.0, 77.0);
+    glVertex3f(54.0, -2.0, 77.0);
+    glEnd();
+    // kanan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(54.0, -2.0, 80.0);
+    glVertex3f(54.0, -10.0, 80.0);
+    glVertex3f(54.0, -10.0, 77.0);
+    glVertex3f(54.0, -2.0, 77.0);
+    glEnd();
+    // kiri
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 80.0);
+    glVertex3f(51.0, -10.0, 80.0);
+    glVertex3f(51.0, -10.0, 77.0);
+    glVertex3f(51.0, -2.0, 77.0);
+    glEnd();
+    // atas
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 33.0);
+    glVertex3f(51.0, -2.0, 33.0);
+    glVertex3f(54.0, -2.0, 36.0);
+    glVertex3f(54.0, -2.0, 36.0);
+    glEnd();
+
+    //******batang 3******
+    // depan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 18.0);
+    glVertex3f(51.0, -10.0, 18.0);
+    glVertex3f(54.0, -10.0, 18.0);
+    glVertex3f(54.0, -2.0, 18.0);
+    glEnd();
+    // belakang
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 15.0);
+    glVertex3f(51.0, -10.0, 15.0);
+    glVertex3f(54.0, -10.0, 15.0);
+    glVertex3f(54.0, -2.0, 15.0);
+    glEnd();
+    // kanan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(54.0, -2.0, 18.0);
+    glVertex3f(54.0, -10.0, 18.0);
+    glVertex3f(54.0, -10.0, 15.0);
+    glVertex3f(54.0, -2.0, 15.0);
+    glEnd();
+    // kiri
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 18.0);
+    glVertex3f(51.0, -10.0, 18.0);
+    glVertex3f(51.0, -10.0, 15.0);
+    glVertex3f(51.0, -2.0, 15.0);
+    glEnd();
+    // atas
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(51.0, -2.0, 15.0);
+    glVertex3f(51.0, -2.0, 15.0);
+    glVertex3f(54.0, -2.0, 18.0);
+    glVertex3f(54.0, -2.0, 18.0);
+    glEnd();
+
+    //******batang 4******
+    // depan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 18.0);
+    glVertex3f(69.0, -10.0, 18.0);
+    glVertex3f(72.0, -10.0, 18.0);
+    glVertex3f(72.0, -2.0, 18.0);
+    glEnd();
+    // belakang
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 15.0);
+    glVertex3f(69.0, -10.0, 15.0);
+    glVertex3f(72.0, -10.0, 15.0);
+    glVertex3f(72.0, -2.0, 15.0);
+    glEnd();
+    // kanan
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(72.0, -2.0, 18.0);
+    glVertex3f(72.0, -10.0, 18.0);
+    glVertex3f(72.0, -10.0, 15.0);
+    glVertex3f(72.0, -2.0, 15.0);
+    glEnd();
+    // kiri
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 18.0);
+    glVertex3f(69.0, -10.0, 18.0);
+    glVertex3f(69.0, -10.0, 15.0);
+    glVertex3f(69.0, -2.0, 15.0);
+    glEnd();
+    // atas
+    glBegin(GL_QUADS);
+    glColor3ub(48, 52, 59);
+    glVertex3f(69.0, -2.0, 15.0);
+    glVertex3f(69.0, -2.0, 15.0);
+    glVertex3f(72.0, -2.0, 18.0);
+    glVertex3f(72.0, -2.0, 18.0);
+    glEnd();
+
+    //******busa******
+    //  atas
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 255); // Blue
+    glVertex3f(72.0, -2.0, 15.0);
+    glVertex3f(51.0, -2.0, 15.0);
+    glVertex3f(51.0, -2.0, 80.0);
+    glVertex3f(72.0, -2.0, 80.0);
+    glEnd();
+
+    // bawah
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 139); 
+    glVertex3f(72.0, -2.5, 15.0);
+    glVertex3f(51.0, -2.5, 15.0);
+    glVertex3f(51.0, -2.5, 80.0);
+    glVertex3f(72.0, -2.5, 80.0);
+    glEnd();
+
+    // depan
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 139); 
+    glVertex3f(51.0, -2.5, 80.0);
+    glVertex3f(51.0, -2.0, 80.0);
+    glVertex3f(72.0, -2.0, 80.0);
+    glVertex3f(72.0, -2.5, 80.0);
+    glEnd();
+
+    // sandaran
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 255);
+    glVertex3f(45.0, 12.0, 15.0);
+    glVertex3f(51.0, -2.0, 15.0);
+    glVertex3f(51.0, -2.0, 80.0);
+    glVertex3f(45.0, 12.0, 80.0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 255);
+    glVertex3f(42.0, 12.0, 15.0);
+    glVertex3f(48.0, -2.2, 15.0);
+    glVertex3f(48.0, -2.2, 80.0);
+    glVertex3f(42.0, 12.0, 80.0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 255);
+    glVertex3f(51.0, -2.2, 15.0);
+    glVertex3f(48.0, -2.2, 15.0);
+    glVertex3f(48.0, -2.2, 80.0);
+    glVertex3f(51.0, -2.2, 80.0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 139);
+    glVertex3f(42.0, 12.0, 80.0);
+    glVertex3f(48.0, -2.2, 80.0);
+    glVertex3f(51.0, -2.2, 80.0);
+    glVertex3f(45.0, 12.0, 80.0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 139);
+    glVertex3f(42.0, 12.0, 15.0);
+    glVertex3f(48.0, -2.2, 15.0);
+    glVertex3f(51.0, -2.2, 15.0);
+    glVertex3f(45.0, 12.0, 15.0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3ub(0, 0, 255);
+    glVertex3f(45.0, 12.1, 15.0);
+    glVertex3f(42.0, 12.1, 15.0);
+    glVertex3f(42.0, 12.1, 80.0);
+    glVertex3f(45.0, 12.1, 80.0);
+    glEnd();
+
+    glPopMatrix();
+}
+
+void display()
+{
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //============================ Ruangan ======================
     glPushMatrix();
-        ubin();
+    ubin();
     glPopMatrix();
 
     glPushMatrix();
-        dinding();
-    glPopMatrix();
-    
-    glPushMatrix();
-        tempatsampah();
+    dinding();
     glPopMatrix();
 
     glPushMatrix();
-        meja();
+    tempatsampah();
     glPopMatrix();
 
     glPushMatrix();
-        logo();
+    meja();
     glPopMatrix();
 
     glPushMatrix();
-        pintu();
+    logo();
     glPopMatrix();
 
+    glPushMatrix();
+    pintu();
+    glPopMatrix();
+
+    glPushMatrix();
+    kursi();
+    glPopMatrix();
 
     glFlush();
     glutSwapBuffers();
 }
 //****************************************************************************************************************************
 //****************************************** fungsi init **********************************************************************
-void init(){
+void init()
+{
     glClearColor(0.2, 0.2, 0.2, 1.0);
 
-    const GLfloat light_ambient[] = { 0.1f, 0.1f, 0.1f, 1.0f };
-    const GLfloat light_diffuse[] = { 0.75f, 0.75f, 0.75f, 1.0f };
-    const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    const GLfloat light_position[] = { 2.0f, 5.0f, 5.0f, 0.0f };
+    const GLfloat light_ambient[] = {0.1f, 0.1f, 0.1f, 1.0f};
+    const GLfloat light_diffuse[] = {0.75f, 0.75f, 0.75f, 1.0f};
+    const GLfloat light_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    const GLfloat light_position[] = {2.0f, 5.0f, 5.0f, 0.0f};
 
-    const GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7f, 1.0f };
-    const GLfloat mat_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
-    const GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    const GLfloat high_shininess[] = { 100.0f };
-
+    const GLfloat mat_ambient[] = {0.7f, 0.7f, 0.7f, 1.0f};
+    const GLfloat mat_diffuse[] = {0.8f, 0.8f, 0.8f, 1.0f};
+    const GLfloat mat_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    const GLfloat high_shininess[] = {100.0f};
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHT0);
@@ -189,83 +789,112 @@ void init(){
 }
 //****************************************************************************************************************************
 //********************************************** fungsi reshape **************************************************************
-void reshape(int w, int h){
-    glViewport(0,0, (GLsizei)w, (GLsizei)h);
+void reshape(int w, int h)
+{
+    // Mengatur viewport ke ukuran jendela
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+
+    // Mengatur proyeksi perspektif
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(45.0, (double)w / (double)h, 1.0, 400.0);
+
+    // Mengatur pandangan kamera
     glTranslated(0.0, -45.0, -100.0);
-    gluLookAt(0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    gluLookAt(0.0, 0.0, 150.0,  // Posisi kamera 
+              0.0, 0.0, 0.0,   // Titik yang dilihat kamera
+              0.0, 1.0, 0.0);  // Vektor atas
+
+    // Kembali ke mode model-view
     glMatrixMode(GL_MODELVIEW);
 }
+
 //****************************************************************************************************************************
 //********************************************** fungsi keyboard *************************************************************
-void keyboard(unsigned char key, int x, int y){
-    switch (key){
-        case 'w':
-        case 'W':
-            glRotatef(-3.0, 1.0, 0.0, 0.0); // rotasi ke atas
+void keyboard(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+    case 'i':
+    case 'I':
+        glRotatef(-3.0, 1.0, 0.0, 0.0); // rotasi ke atas
         break;
-        case 's':
-        case 'S':
-             glRotatef(3.0, 1.0, 0.0, 0.0); // rotasi ke bawah
+    case 'k':
+    case 'K':
+        glRotatef(3.0, 1.0, 0.0, 0.0); // rotasi ke bawah
         break;
-        case 'd':
-        case 'D':
-            glRotatef(3.0, 0.0, 1.0, 0.0); // rotasi ke kanan
+    case 'l':
+    case 'L':
+        glRotatef(3.0, 0.0, 1.0, 0.0); // rotasi ke kanan
         break;
-        case 'a':
-        case 'A':
-            glRotatef(-3.0, 0.0, 1.0, 0.0); //rotasi ke kiri
+    case 'j':
+    case 'J':
+        glRotatef(-3.0, 0.0, 1.0, 0.0); // rotasi ke kiri
         break;
-        case 'e':
-        case 'E':
-            glRotatef(-3.0, 0.0, 0.0, 1.0); //rotasi ke thd sumbu z / searah jarum jam
+    case 'u':
+    case 'U':
+        glRotatef(-3.0, 0.0, 0.0, 1.0); // rotasi ke thd sumbu z / searah jarum jam
         break;
-        case 'f':
-        case 'F':
-            glRotatef(3.0, 0.0, 0.0, 1.0); //rotasi ke thd sumbu z / lawan arah jarum jam
+    case 'h':
+    case 'H':
+        glRotatef(3.0, 0.0, 0.0, 1.0); // rotasi ke thd sumbu z / lawan arah jarum jam
         break;
-        case 'j':
-        case 'J':
-            glTranslatef(1.0, 0.0, 0.0); //geser ke kanan
+    case 'd':
+    case 'D':
+        glTranslatef(1.0, 0.0, 0.0); // geser ke kanan
         break;
-        case 'l':
-        case 'L':
-            glTranslatef(-1.0, 0.0, 0.0); //geser ke kiri
+    case 'a':
+    case 'A':
+        glTranslatef(-1.0, 0.0, 0.0); // geser ke kiri
         break;
-        case 'i':
-        case 'I':
-            glTranslatef(0.0, 0.0, 1.0); //geser ke depan
+    case 'w':
+    case 'W':
+        glTranslatef(0.0, 0.0, 1.0); // geser ke depan
         break;
-        case 'k':
-        case 'K':
-            glTranslatef(0.0, 0.0, -1.0); //geser ke belakang
+    case 's':
+    case 'S':
+        glTranslatef(0.0, 0.0, -1.0); // geser ke belakang
         break;
-        case 'h':
-        case 'H':
-            glTranslatef(0.0, 1.0, 0.0); //geser ke bawah
-        break;
-        case 'u':
-        case 'U':
-            glTranslatef(0.0, -1.0, 0.0); //geser ke atas
-        break;
+    //case 'f':
+    //case 'F':
+     //   glTranslatef(0.0, 1.0, 0.0); // geser ke bawah
+     //   break;
+    //case 'e':
+    //case 'E':
+    //    glTranslatef(0.0, -1.0, 0.0); // geser ke atas
+    //    break;
     }
 
     glutPostRedisplay();
 }
+
+//**********************************************************************************************************
+// ************************************Fungsi untuk menangani event mouse***********************************
+void mouse(int button, int state, int x, int y) {
+    if (state == GLUT_DOWN) {
+        if (button == 3) { // Scroll up
+            glTranslatef(0.0, 1.0, 0.0); // geser ke atas
+        } else if (button == 4) { // Scroll down
+            glTranslatef(0.0, -1.0, 0.0); // geser ke bawah
+        }
+        glutPostRedisplay(); // Menggambarkan ulang layar
+    }
+}
+
 //*****************************************************************************************************************************************
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ad
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PROGRAM UTAMA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-int main (int argc, char** argv){
+int main(int argc, char **argv)
+{
     glutInit(&argc, argv);
     glutInitWindowSize(1152, 680);
     glutInitWindowPosition(20, 10);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
-    glutCreateWindow("Project GLUT 3D");
+    glutCreateWindow("Project Grafika 3D Kelompok 9 Jum'at");
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
+    glutMouseFunc(mouse); 
     init();
     glutMainLoop();
 }
