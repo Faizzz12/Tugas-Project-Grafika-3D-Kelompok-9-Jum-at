@@ -1007,7 +1007,7 @@ void reshape(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
-********
+//********
 //** fungsi keyboard **
 void keyboard(unsigned char key, int x, int y)
 {
